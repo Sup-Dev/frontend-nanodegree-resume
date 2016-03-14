@@ -77,15 +77,58 @@ if (bio.skills.length > 0) {
 }
 
 // Work
-if (work.jobs.length > 0) {
-  $("#workExperience").append(HTMLworkStart);
-    
-  for (job in work.jobs) {
-    var employer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
-    var title = HTMLworkTitle.replace("%data%", work.jobs[job].title);
-    
-    $(".work-entry:last").append(employer + title);
-    $(".work-entry:last").append(HTMLworkDates.replace("%data%", work.jobs[job].dates));
-    $(".work-entry:last").append(HTMLworkDescription.replace("%data%", work.jobs[job].description));
+function displayWork() {
+  if (work.jobs.length > 0) {
+    $("#workExperience").append(HTMLworkStart);
+
+    for (job in work.jobs) {
+      var employer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+      var title = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+
+      $(".work-entry:last").append(employer + title);
+      $(".work-entry:last").append(HTMLworkDates.replace("%data%", work.jobs[job].dates));
+      $(".work-entry:last").append(HTMLworkDescription.replace("%data%", work.jobs[job].description));
+    }
   }
-}
+};
+
+displayWork();
+
+// Projects
+projects.display = function() {
+  for (project in projects.projects) {
+    $("#projects").append(HTMLprojectStart);
+    
+    var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
+    $(".project-entry:last").append(formattedTitle);
+    
+    var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
+    $(".project-entry:last").append(formattedDates);
+    
+    var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
+    $(".project-entry:last").append(formattedDescription);
+  }
+};
+
+projects.display();
+
+// Log Clicks
+$(document).click(function(loc) {
+  var x = loc.pageX;
+  var y = loc.pageY;
+  
+  logClicks(x, y);
+});
+
+// internationlize
+function inName(name) {
+  name = name.trim().split(" ");
+  name[1] = name[1].toUpperCase();
+  name[0] = name[0].slice(0,1).toUpperCase();
+  name[0].slice(1).toLowerCase();
+  
+  return name[0] + " " + name[1];
+};
+
+$("#main").append(internationalizeButton);
+
