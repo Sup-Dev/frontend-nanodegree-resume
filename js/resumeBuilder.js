@@ -9,7 +9,7 @@ var bio = {
     "email": "sourabh@test.com",
     "github": "Sup-Dev",
     "twitter": "@sevenzone",
-    "location": "Gurgaon, India"
+    "location": "New York"
   },
   "welcomeMessage": "Hello World!",
   "skills": ["programming", "planning", "entertaining"]
@@ -111,6 +111,9 @@ projects.display = function() {
 };
 
 projects.display();
+
+// Map
+$("#mapDiv").append(googleMap);
 
 // Log Clicks
 $(document).click(function(loc) {
