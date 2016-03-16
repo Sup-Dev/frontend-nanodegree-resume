@@ -12,7 +12,8 @@ var bio = {
     "location": "New York"
   },
   "welcomeMessage": "Hello World!",
-  "skills": ["programming", "planning", "entertaining"]
+  "skills": ["programming", "planning", "entertaining"],
+  "bioPic": "images/fry.jpg"
 };
 
 var eduaction = {
@@ -58,6 +59,9 @@ var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
 
 $("#header").prepend(formattedRole);
 $("#header").prepend(formattedName);
+
+$("#header").append(HTMLbioPic.replace("%data%", bio.bioPic));
+$("#header").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
 
 $("#topContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
 $("#topContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
