@@ -20,10 +20,10 @@ var eduaction = {
   "schools": [
     {
       "name": "Indraprast University",
-      "city": "New Delhi, India",
+      "location": "New Delhi, India",
       "degree": "Bachelors",
       "mojors": ["CS"],
-      "dates": 2014,
+      "dates": " May 2014",
       "url": "http://test.com"
     }
   ]
@@ -115,6 +115,24 @@ projects.display = function() {
 };
 
 projects.display();
+
+// Education
+eduaction.display = function () {
+  if (eduaction.schools.length > 0) {
+    $("#education").append(HTMLschoolStart);
+
+    for (school in eduaction.schools) {
+      var foramttedName = HTMLschoolName.replace("%data%", eduaction.schools[school].name);
+      var formattedDegree = HTMLschoolDegree.replace("%data%", eduaction.schools[school].degree);
+      $(".education-entry:last").append(foramttedName + formattedDegree);
+      $(".education-entry:last").append(HTMLschoolDates.replace("%data%", eduaction.schools[school].dates));
+      $(".education-entry:last").append(HTMLschoolLocation.replace("%data%", eduaction.schools[school].location));
+      $(".education-entry:last").append(HTMLschoolMajor.replace("%data%", eduaction.schools[school].mojors));
+    }
+  }
+};
+
+eduaction.display();
 
 // Map
 $("#mapDiv").append(googleMap);
