@@ -9,14 +9,14 @@ var bio = {
     "email": "sourabh@test.com",
     "github": "Sup-Dev",
     "twitter": "@sevenzone",
-    "location": "New York"
+    "location": "Gurgaon"
   },
   "welcomeMessage": "Hello World!",
   "skills": ["programming", "planning", "entertaining"],
   "bioPic": "images/fry.jpg"
 };
 
-var eduaction = {
+var education = {
   "schools": [
     {
       "name": "Indraprast University",
@@ -25,7 +25,7 @@ var eduaction = {
       "mojors": ["CS"],
       "dates": " May 2014",
       "url": "http://test.com"
-    }
+    },
   ]
 };
 
@@ -35,7 +35,8 @@ var work = {
       "employer": "Ubinext Software",
       "title": "Software Architect",
       "dates": "May 2014 - Current",
-      "description": "I work as a computer architect here!"
+      "description": "I work as a computer architect here!",
+      "location": "Gurgaon"
     }
   ]
 };
@@ -95,6 +96,7 @@ work.display = function() {
 
       $(".work-entry:last").append(employer + title);
       $(".work-entry:last").append(HTMLworkDates.replace("%data%", work.jobs[job].dates));
+      $(".work-entry:last").append(HTMLworkLocation.replace("%data%", work.jobs[job].location));
       $(".work-entry:last").append(HTMLworkDescription.replace("%data%", work.jobs[job].description));
     }
   }
@@ -121,22 +123,22 @@ projects.display = function() {
 projects.display();
 
 // Education
-eduaction.display = function () {
-  if (eduaction.schools.length > 0) {
+education.display = function () {
+  if (education.schools.length > 0) {
     $("#education").append(HTMLschoolStart);
 
-    for (school in eduaction.schools) {
-      var foramttedName = HTMLschoolName.replace("%data%", eduaction.schools[school].name);
-      var formattedDegree = HTMLschoolDegree.replace("%data%", eduaction.schools[school].degree);
+    for (school in education.schools) {
+      var foramttedName = HTMLschoolName.replace("%data%", education.schools[school].name);
+      var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
       $(".education-entry:last").append(foramttedName + formattedDegree);
-      $(".education-entry:last").append(HTMLschoolDates.replace("%data%", eduaction.schools[school].dates));
-      $(".education-entry:last").append(HTMLschoolLocation.replace("%data%", eduaction.schools[school].location));
-      $(".education-entry:last").append(HTMLschoolMajor.replace("%data%", eduaction.schools[school].mojors));
+      $(".education-entry:last").append(HTMLschoolDates.replace("%data%", education.schools[school].dates));
+      $(".education-entry:last").append(HTMLschoolLocation.replace("%data%", education.schools[school].location));
+      $(".education-entry:last").append(HTMLschoolMajor.replace("%data%", education.schools[school].mojors));
     }
   }
 };
 
-eduaction.display();
+education.display();
 
 // Map
 $("#mapDiv").append(googleMap);
