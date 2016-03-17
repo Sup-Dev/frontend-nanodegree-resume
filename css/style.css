@@ -213,6 +213,19 @@ span {
   }
 }
 
+/* Custom CSS */
+
+@media only screen and (min-width: 1025px) {
+  #workExperience, #project {
+    width: 50vw;
+  }
+
+  #workExperience {
+    float: left;
+    background-color: #fff;
+  }
+}
+
 h1, h2 {
     text-shadow: 1px 1px;
 }
