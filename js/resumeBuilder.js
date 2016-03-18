@@ -13,7 +13,7 @@ var bio = {
   },
   "welcomeMessage": "Hello World!",
   "skills": ["programming", "planning", "entertaining"],
-  "bioPic": "images/fry.jpg"
+  "biopic": "images/fry.jpg"
 };
 
 var education = {
@@ -22,7 +22,7 @@ var education = {
       "name": "Indraprast University",
       "location": "New Delhi, India",
       "degree": "Bachelors",
-      "mojors": ["CS"],
+      "majors": ["CS"],
       "dates": "Sep 2010 - May 2014",
       "url": "http://test.com"
     }
@@ -70,7 +70,7 @@ bio.display = function() {
   $("#header").prepend(formattedRole);
   $("#header").prepend(formattedName);
 
-  $("#header").append(HTMLbioPic.replace("%data%", bio.bioPic));
+  $("#header").append(HTMLbioPic.replace("%data%", bio.biopic));
   $("#header").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
 
   $("#topContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
@@ -144,7 +144,7 @@ education.display = function () {
       $(".education-entry:last").append(foramttedName + formattedDegree);
       $(".education-entry:last").append(HTMLschoolDates.replace("%data%", education.schools[school].dates));
       $(".education-entry:last").append(HTMLschoolLocation.replace("%data%", education.schools[school].location));
-      $(".education-entry:last").append(HTMLschoolMajor.replace("%data%", education.schools[school].mojors));
+      $(".education-entry:last").append(HTMLschoolMajor.replace("%data%", education.schools[school].majors));
     }
     
     $(".education-entry:last").append(HTMLonlineClasses);
