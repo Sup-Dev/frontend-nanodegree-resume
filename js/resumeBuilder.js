@@ -23,9 +23,16 @@ var education = {
       "location": "New Delhi, India",
       "degree": "Bachelors",
       "mojors": ["CS"],
-      "dates": " May 2014",
+      "dates": "Sep 2010 - May 2014",
       "url": "http://test.com"
-    },
+    }
+  ], "onlineCourses": [
+      {
+        "title": "Front End Web Development NanoDegree",
+        "school": "Udacity",
+        "date": "Feb 2016 - Conti",
+        "url": "https://udacity.com"
+      }
   ]
 };
 
@@ -46,7 +53,8 @@ var projects = {
     {
       "title": "Infrastitch",
       "dates": "Dec 2014",
-      "description": "A project managemant software"
+      "description": "A project managemant software",
+      "images": ["images/197x148.gif"]
     }
   ]
 };
@@ -117,6 +125,9 @@ projects.display = function() {
     
     var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
     $(".project-entry:last").append(formattedDescription);
+    
+    var formattedImages = HTMLprojectImage.replace("%data%", projects.projects[project].images[0]);
+    $(".project-entry:last").append(formattedImages);
   }
 };
 
@@ -135,10 +146,27 @@ education.display = function () {
       $(".education-entry:last").append(HTMLschoolLocation.replace("%data%", education.schools[school].location));
       $(".education-entry:last").append(HTMLschoolMajor.replace("%data%", education.schools[school].mojors));
     }
+    
+    $(".education-entry:last").append(HTMLonlineClasses);
+    for (school in education.onlineCourses) {
+      
+      var foramttedTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[school].title);
+      var formattedSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[school].school);
+      $(".education-entry:last").append(foramttedTitle + formattedSchool);
+      $(".education-entry:last").append(HTMLonlineDates.replace("%data%", education.onlineCourses[school].date));
+      $(".education-entry:last").append(HTMLonlineURL.replace("%data%", education.onlineCourses[school].url));
+    }
   }
 };
 
 education.display();
+
+// Footer
+$("#footerContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
+$("#footerContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
+$("#footerContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
+$("#footerContacts").append(HTMLtwitter.replace("%data%", bio.contacts.twitter));
+$("#footerContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
 
 // Map
 $("#mapDiv").append(googleMap);
